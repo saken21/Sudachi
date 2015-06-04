@@ -1,0 +1,487 @@
+@charset "UTF-8";
+
+@import "common/layout.css";
+
+/*-------------------------------------------------------------------------
+	Login
+/*-----------------------------------------------------------------------*/
+#login {
+}
+
+	#login p {
+		float:left;
+		margin-right:30px;
+	}
+	
+		#login p label {
+			margin-right:10px;
+		}
+	
+		#login p input {
+			padding:5px 8px;
+			border:1px solid #aaa;
+			font-size:14px;
+		}
+		
+		#login p input[type="submit"] {
+			position:relative;
+			top:-5px;
+			margin-left:60px;
+			padding:10px 40px;
+			background:#eee;
+			cursor:pointer;
+		}
+		
+		#login p input[type="submit"]:hover {
+			background-color:#ddd;
+		}
+		
+/*-------------------------------------------------------------------------
+	Main
+/*-----------------------------------------------------------------------*/
+#main {
+	display:none;
+}
+
+	#userName,
+	#logout {
+		position:fixed;
+		right:10px;
+		z-index:1;
+	}
+
+	#userName {
+		top:10px;
+		border:1px solid #333;
+	}
+	
+		#userName span {
+			display:block;
+			text-align:center;
+		}
+		
+		#userName span.title,
+		#userName span.content {
+			padding:5px 20px;
+		}
+		
+		#userName span.title {
+			background:#333;
+			color:#fff;
+			font-size:12px;
+		}
+		
+		#userName span.content {
+			background:#fff;
+			font-size:16px;
+		}
+		
+	#logout {
+		bottom:10px;
+		padding:10px 20px;
+		border-radius:3px;
+		background:#333;
+		color:#fff;
+		cursor:pointer;
+	}
+	
+	#logout:hover {
+		background-color:#666;
+	}
+		
+	#csv,
+	.admin-mode #submit {
+		display:none;
+	}
+	
+	#csv {
+		width:200px;
+		padding:5px;
+		border-radius:3px;
+		background:#333;
+		color:#fff;
+		text-align:center;
+		cursor:pointer;
+	}
+	
+	#csv:hover {
+		background:#666;
+	}
+	
+	.admin-mode #csv {
+		display:block;
+	}
+	
+/*-------------------------------------------------------------------------
+	Navi
+/*-----------------------------------------------------------------------*/
+#navi {
+	display:none;
+	top:-10px;
+}
+
+.admin-mode #navi {
+	display:block;
+}
+
+	#navi ul {
+	}
+	
+		#navi ul li {
+			float:left;
+		}
+		
+/*-------------------------------------------------------------------------
+	Enterprise Navi
+/*-----------------------------------------------------------------------*/
+#enterpriseNavi {
+	float:left;
+	margin-bottom:10px;
+}
+
+	#enterpriseNavi li {
+		margin-right:10px;
+		padding:2px 10px;
+		border:1px solid #333;
+		background:#fff;
+		cursor:pointer;
+	}
+	
+	#enterpriseNavi li:hover {
+		background-color:#eee;
+	}
+	
+	#enterpriseNavi li.active {
+		background-color:#333;
+		color:#fff;
+	}
+
+/*-------------------------------------------------------------------------
+	Area Navi
+/*-----------------------------------------------------------------------*/
+#areaNavi {
+	float:right;
+	position:relative;
+	top:15px;
+}
+
+	#areaNavi li {
+		width:16px;
+		height:16px;
+		margin:2px 3px;
+		border-radius:50%;
+		background:#333;
+		cursor:pointer;
+	}
+	
+	#areaNavi li.active {
+		width:20px;
+		height:20px;
+		margin:0 3px;
+	}
+	
+	#areaNavi li:hover {
+		opacity:.6;
+	}
+	
+	#areaNavi li.hokkaido_tohoku {
+		background-color:#4687c8;
+	}
+	
+	#areaNavi li.kanto_koshinetsu {
+		background-color:#6fbadd;
+	}
+	
+	#areaNavi li.tokai_hokuriku {
+		background-color:#a0c337;
+	}
+	
+	#areaNavi li.kinki {
+		background-color:#dd8f00;
+	}
+	
+	#areaNavi li.chugoku_shikoku {
+		background-color:#e87fba;
+	}
+	
+	#areaNavi li.kyushu_okinawa {
+		background-color:#ea5f5f;
+	}
+		
+/*-------------------------------------------------------------------------
+	Table
+/*-----------------------------------------------------------------------*/
+#table {
+	margin-bottom:40px
+}
+
+	#table .table {
+		float:left;
+	}
+	
+		#table .table .content {
+		}
+	
+			#table .table .content dl {
+				float:left;
+			}
+			
+				#table .table .content dl dt,
+				#table .table .content dl dd {
+					margin:2px;
+					border:1px solid #aaa;
+				}
+				
+				#table .table .content dl dt,
+				#table .table .content dl dd,
+				#table .table .content dl dd input {
+					height:40px;
+					line-height:40px;
+				}
+				
+				#table .table .content dl dt {
+					border-color:#333;
+					background:#333;
+					color:#fff;
+					text-align:center;
+				}
+				
+				#table .table .content dl dd,
+				#table .table .content dl dd input {
+					font-size:12px;
+					text-align:right;
+				}
+				
+				#table .table .content dl.title dd {
+					text-align:left;
+				}
+				
+					#table .table .content dl dd input {
+						border:none;
+						background:none;
+						line-height:1.6;
+					}
+			
+	#table-header {
+	}
+	
+			#table-header .content dl.total_users_stock_quantity,
+			#table-header .content dl.total_stock_quantity {
+				display:none;
+			}
+			
+			.admin-mode #table-header .content dl.total_users_stock_quantity,
+			.admin-mode #table-header .content dl.total_stock_quantity {
+				display:block;
+			}
+	
+				#table-header .content dl dt,
+				#table-header .content dl dd {
+					padding:0 10px;
+				}
+			
+	#table-main {
+		overflow:hidden;
+	}
+	
+		#table-main .content {
+			position:relative;
+			margin-bottom:10px;
+		}
+		
+			#table-main .content dl {
+			}
+			
+			.admin-mode #table-main .content dl {
+				width:120px;
+			}
+			
+				#table-main .content dl dt {
+					border-color:#888 !important;
+					background-color:#888 !important;
+				}
+				
+					#table-main .content dl dt span {
+						display:block;
+						font-size:10px;
+					}
+				
+				.admin-mode #table-main .content dl dt {
+					height:33px;
+					padding-top:7px;
+					font-size:12px;
+					line-height:1.2;
+				}
+				
+				.admin-mode #table-main .content dl.hokkaido_tohoku dt {
+					border-color:#4687c8 !important;
+					background-color:#4687c8 !important;
+				}
+				
+				.admin-mode #table-main .content dl.kanto_koshinetsu dt {
+					border-color:#6fbadd !important;
+					background-color:#6fbadd !important;
+				}
+				
+				.admin-mode #table-main .content dl.tokai_hokuriku dt {
+					border-color:#a0c337 !important;
+					background-color:#a0c337 !important;
+				}
+				
+				.admin-mode #table-main .content dl.kinki dt {
+					border-color:#dd8f00 !important;
+					background-color:#dd8f00 !important;
+				}
+				
+				.admin-mode #table-main .content dl.chugoku_shikoku dt {
+					border-color:#e87fba !important;
+					background-color:#e87fba !important;
+				}
+				
+				.admin-mode #table-main .content dl.kyushu_okinawa dt {
+					border-color:#ea5f5f !important;
+					background-color:#ea5f5f !important;
+				}
+			
+				.admin-mode #table-main .content dl dd {
+					padding:0 10px;
+				}
+				
+				.admin-mode #table-main .content dl:hover dd {
+					background:#f8f8f8;
+				}
+				
+					.admin-mode #table-main .content dl dd span {
+						display:inline-block;
+						text-align:right;
+					}
+					
+					.admin-mode #table-main .content dl dd span.stock {
+						width:46px;
+						margin-right:6px;
+						padding-right:10px;
+						border-right:1px solid #ccc;
+					}
+					
+					.admin-mode #table-main .content dl dd span.lastStock {
+						width:30px;
+						color:#aaa;
+						font-size:10px;
+					}
+				
+					#table-main .content dl dd p {
+						float:left;
+						padding:0 10px;
+					}
+					
+					#table-main .content dl dd p.stock {
+						width:172px;
+						border-right:1px solid #888;
+					}
+					
+					#table-main .content dl dd.type-1 p.stock {
+						opacity:.5;
+					}
+					
+					#table-main .content dl dd p.order {
+						width:131px;
+					}
+					
+						#table-main .content dl dd p label {
+							width:18px;
+							padding:3px 6px;
+							border-radius:3px;
+							color:#fff;
+						}
+						
+						#table-main .content dl dd p.stock label {
+							background:#7dc3d0;
+						}
+						
+						#table-main .content dl dd p.order label {
+							background:#f58da6;
+						}
+						
+						#table-main .content dl dd.ordered p.order label {
+							background-color:#8ad085;
+						}
+						
+						#table-main .content dl dd.shipped p.order label {
+							background-color:#ccc;
+						}
+					
+						#table-main .content dl dd p input {
+							width:69px;
+						}
+						
+						#table-main .content dl dd.ordered p.order input,
+						#table-main .content dl dd.shipped p.order input {
+							color:#aaa;
+						}
+						
+						#table-main .content dl dd p.stock input {
+							padding-right:5px;
+							border-right:1px solid #ccc;
+						}
+						
+						#table-main .content dl dd p.stock .lastStock {
+							display:inline-block;
+							width:60px;
+							color:#aaa;
+							font-size:10px;
+						}
+						
+		#table-main .content #admin {
+			display:none;
+		}
+		
+/*-------------------------------------------------------------------------
+	Scrollbar
+/*-----------------------------------------------------------------------*/
+#scrollbar {
+	display:none;
+	width:100%;
+	height:24px;
+}
+
+#scrollbar.active {
+	display:block;
+}
+
+	#scrollbar .button {
+		position:absolute;
+		top:0;
+		width:24px;
+		height:24px;
+		font-size:8px;
+		text-align:center;
+		line-height:24px;
+		cursor:pointer;
+		z-index:1;
+	}
+	
+	#scrollbar .button:hover {
+		color:#6fb2ba;
+	}
+	
+	#scrollbar .button.left {
+		left:0;
+	}
+	
+	#scrollbar .button.right {
+		right:0;
+	}
+	
+	#scrollbar .field {
+		padding:7px 26px;
+		background:#f8f8f8;
+	}
+	
+		#scrollbar .field .dial {
+			position:relative;
+			width:20px;
+			height:10px;
+			border-radius:3px;
+			background:#ddd;
+			cursor:pointer;
+		}

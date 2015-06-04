@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta name="robots" content="noindex" />
+
+<title>LITALICO在庫管理システム Sudachi：在庫確認／注文</title>
+
+<link href="files/css/style.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body id="index">
+
+<div id="all">
+
+	<div id="title">
+    	<div class="wrap">
+        	<h1>在庫確認／注文</h1>
+            <p class="attention">毎月15日で注文を締め切ります。ご注意ください。</p>
+        </div>
+    </div>
+
+	<div id="login">
+        <div class="wrap">
+            <form>
+                <p class="id"><label for="login-id">ID : </label><input type="text" name="id" id="login-id"></p>
+                <p class="pass"><label for="login-pass">PASS : </label><input type="pass" name="pass" id="login-pass"></p>
+                <p class="submit"><input type="submit" value="Login" class="submit" id="login-submit"></p>
+            </form>
+        </div>
+    </div>
+    
+    <div id="main">
+        <div class="wrap">
+        
+        	<div id="controller">
+            	<p id="userName"><span class="title">ログイン中</span><span class="content">名無し</span></p>
+                <p id="logout">ログアウト</p>
+            </div>
+            
+            <div id="navi">
+            	<ul class="enterprise navi" id="enterpriseNavi">
+                	<li class="LITALICO">LITALICO</li>
+                    <li class="WINGLE">WINGLE</li>
+                    <li class="Leaf Progress">LeafProgress</li>
+                    <li class="Leaf Junior">LeafJunior</li>
+                    <li class="Qremo">Qremo</li>
+                </ul>
+            	<ul class="area navi" id="areaNavi">
+                	<li class="all"></li>
+                	<li class="hokkaido_tohoku"></li>
+                    <li class="kanto_koshinetsu"></li>
+                    <li class="tokai_hokuriku"></li>
+                    <li class="kinki"></li>
+                    <li class="chugoku_shikoku"></li>
+                    <li class="kyushu_okinawa"></li>
+                </ul>
+            </div>
+        
+        	<div id="table">
+            
+            	<div class="table" id="table-header">
+                
+                	<div class="content">
+                    	<dl class="title">
+                            <dt>アイテム名</dt>
+                        </dl>
+                        <dl class="total_quantity">
+                            <dt>総製造数</dt>
+                        </dl>
+                        <dl class="stock_quantity">
+                            <dt>倉庫在庫</dt>
+                        </dl>
+                        <dl class="total_users_stock_quantity">
+                            <dt>全センター在庫合計</dt>
+                        </dl>
+                        <dl class="total_stock_quantity">
+                            <dt>在庫合計</dt>
+                        </dl>
+                    </div>
+                    
+                </div>
+            
+            	<div class="table" id="table-main">
+                
+                	<div class="content">
+                    </div>
+                    
+                    <div class="active" id="scrollbar">
+                    	<p class="button left">◀</p>
+                        <div class="field"><p class="dial">&nbsp;</p></div>
+                        <p class="button right">▶</p>
+                    </div>
+                    
+                </div>
+            
+            </div>
+            
+            <p id="submit"><span>登録</span></p>
+            <p id="csv">CSV書き出し</p>
+        
+        </div>
+    </div>
+
+</div>
+
+<script src="files/js/common/base.js?ver=1.01.01" type="text/javascript" charset="UTF-8"></script>
+<script src="files/js/script.js?ver=1.01.01" type="text/javascript" charset="UTF-8"></script>
+
+</body>
+</html>

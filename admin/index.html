@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>LITALICO在庫管理システム Sudachi : 注文履歴</title>
+
+<link href="files/css/admin.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body id="admin">
+
+<div id="all">
+
+	<div id="title">
+    	<div class="wrap">
+        	<h1>注文履歴</h1>
+        </div>
+    </div>
+
+	<div id="orders">
+    	<div class="wrap">
+        	<ul class="navi" id="orders-navi">
+            	<li class="all">全て</li>
+            	<li class="waiting">出荷確認待ち</li>
+                <li class="shipped">出荷済み</li>
+            </ul>
+        	<table>
+            	<tr class="header">
+                	<th class="item">アイテム名</th>
+                    <th class="user">センター名</th>
+                    <th class="quantity">注文数</th>
+                    <th class="datetime">注文時間</th>
+                    <th class="flag">出荷確認</th>
+                    <th class="shippedDatetime">出荷時間</th>
+                    <th class="boxnum">箱数</th>
+                </tr>
+            </table>
+            <p id="boxnum"><label for="input-boxnum">箱数 : </label><input type="number" min="1" value="1" name="boxnum" id="input-boxnum"></p>
+            <p id="submit"><span>登録</span></p>
+        </div>
+    </div>
+
+	<div id="inputdata">
+        <div class="wrap">
+            <form>
+            	<div class="content">
+                	<dl class="user">
+                        <dt>新規センター登録</dt>
+                        <dd class="parmanent_id"><label for="user-parmanent_id"><span class="indispensable">*</span>センター名 : </label><input type="text" name="parmanent_id" id="user-parmanent_id"></dd>
+                        <dd class="id"><label for="user-id"><span class="indispensable">*</span>ログインID : </label><input type="text" name="id" id="user-id"></dd>
+                        <dd class="pass"><label for="user-pass"><span class="indispensable">*</span>パスワード : </label><input type="text" name="pass" id="user-pass"></dd>
+                        <dd class="tel"><label for="user-tel">電話番号 : </label><input type="text" name="tel" id="user-tel"></dd>
+                        <dd class="zipcode"><label for="user-zipcode">郵便番号 : </label><input type="text" name="zipcode" id="user-zipcode"></dd>
+                        <dd class="address"><label for="user-address">住所 : </label><input type="text" name="address" id="user-address"></dd>
+                    </dl>
+                    <dl class="item">
+                        <dt>新規アイテム登録</dt>
+                        <dd class="title"><label for="item-title"><span class="indispensable">*</span>アイテム名 : </label><input type="text" name="title" id="text-title"></dd>
+                        <dd class="quantity"><label for="item-quantity">全数 : </label><input type="text" name="quantity" id="item-quantity"></dd>
+                    </dl>
+                </div>
+                <p class="submit"><input type="submit" value="登録" class="submit" id="inputdata-submit"></p>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<script src="../files/js/common/base.js?ver=1.01.01" type="text/javascript" charset="UTF-8"></script>
+<script src="files/js/admin.js?ver=1.01.01" type="text/javascript" charset="UTF-8"></script>
+
+</body>
+</html>

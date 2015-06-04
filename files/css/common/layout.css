@@ -1,0 +1,66 @@
+@charset "UTF-8";
+
+@import "base.css";
+
+/*-------------------------------------------------------------------------
+	All
+/*-----------------------------------------------------------------------*/
+#all {
+	margin:50px 0;
+}
+
+	#all div {
+		position:relative;
+	}
+	
+	#all .wrap {
+		width:94%;
+		margin:0 auto;
+	}
+	
+/*-------------------------------------------------------------------------
+	Title
+/*-----------------------------------------------------------------------*/
+#title {
+	margin-bottom:40px;
+}
+
+	#title h1,
+	#title .attention {
+		float:left;
+	}
+
+	#title h1 {
+		margin-right:60px;
+		padding-bottom:5px;
+		border-bottom:3px solid #333;
+		font-size:18px;
+		font-weight:bold;
+	}
+	
+	#title .attention {
+		position:relative;
+		top:4px;
+	}
+	
+/*-------------------------------------------------------------------------
+	Submit
+/*-----------------------------------------------------------------------*/
+#submit {
+	width:140px;
+	padding:5px;
+	border-radius:3px;
+	background:#333;
+	text-align:center;
+	cursor:pointer;
+}
+
+#submit:hover {
+	background-color:#666;
+}
+
+	#submit span {
+		padding-left:1em;
+		color:#fff;
+		letter-spacing:1em;
+	}
