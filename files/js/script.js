@@ -563,6 +563,13 @@
 		========================================================================== */
 		function submit() {
 			
+			if (_ajax.getIsConnecting()) {
+				
+				alert("データベース登録中です。");
+				return false;
+				
+			}
+			
 			var stocks  = [];
 			var orders  = [];
 			var $orderd = $();
@@ -789,6 +796,13 @@
 		Logout
 		========================================================================== */
 		function logout() {
+			
+			if (_ajax.getIsConnecting()) {
+				
+				alert("データベース登録中です。");
+				return false;
+				
+			}
 			
 			_$cookie(COOKIE_NAME,null,{ path:"/" });
 			location.reload(false);

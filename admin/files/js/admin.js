@@ -331,11 +331,17 @@
 		========================================================================== */
 		function submit() {
 			
+			if (_ajax.getIsConnecting()) {
+				
+				alert("データベース登録中です。");
+				return false;
+				
+			}
+			
 			var $checked = _$inputs.filter(":checked");
 			
 			var boxnum  = +_$boxnum.prop("value");
 			var length  = $checked.length;
-			var counter = 0;
 			
 			if (!length) {
 				
@@ -344,42 +350,106 @@
 				
 			}
 			
+			var targetList   = [];
+			var idList       = [];
+			var objList      = [];
+			var quantityList = [];
+			var itemIDList   = [];
+			
 			if (confirm("出荷ステータスを更新します。")) {
 
 				_ajax.setBeforeunload();
 				
-				_ajax.getDatetime(function(datetime) {
+				check(function(isOK) {
 					
-					$checked.each(function() {
-
-						var $target = $(this);
-
-						var id  = $target.prop("id").split("input-order-")[1];
-						var obj = _data[id];
-
-						_ajax.shipOrder(obj.id,+obj.quantity,obj.item_id,obj.user_id,_term,datetime,boxnum,function() {
-
-							var $parent = $target.parents(".flag").html("出荷済み").parents(".content").removeClass("waiting").addClass("shipped");
-
-							$parent.find(".shippedDatetime").text(datetime);
-							$parent.find(".boxnum").text(boxnum);
-
-							addCounter();
-
-							return false;
-
-						},addCounter);
-
-					});
+					if (!isOK) {
+						
+						alert("アイテム上限数をオーバーするため出荷処理をキャンセルしました。");
+						return false;
+						
+					}
+					
+					_ajax.getDatetime(shipp);
+					
+					return false;
 					
 				});
 
 			}
 			
-			function addCounter() {
+			function check(onComplete) {
 				
-				counter++;
-				if (counter > length - 1) finish();
+				var isOK    = true;
+				var counter = 0;
+				
+				for (var i = 0; i < length; i++) {
+					
+					var $target = $checked.eq(i);
+					
+					var id       = $target.prop("id").split("input-order-")[1];
+					var obj      = _data[id];
+					var quantity = +obj.quantity;
+					var itemID   = obj.item_id;
+					
+					targetList[i]   = $target;
+					idList[i]       = id;
+					objList[i]      = obj;
+					quantityList[i] = quantity;
+					itemIDList[i]   = itemID;
+					
+					_ajax.checkOrder(quantity,itemIDList,onChecked);
+					
+				}
+				
+				function onChecked(isSuccess) {
+					
+					if (!isSuccess) isOK = false;
+					
+					counter++;
+					if (counter > length - 1) onComplete(isOK);
+					
+					return false;
+					
+				}
+				
+				return false;
+				
+			}
+			
+			function shipp(datetime) {
+				
+				var counter = 0;
+				
+				for (var i = 0; i < length; i++) {
+					ajax(targetList[i],idList[i],objList[i],quantityList[i],itemIDList[i]);
+				}
+				
+				function ajax($target,id,obj,quantity,itemID) {
+					
+					_ajax.shipOrder(id,quantity,itemID,obj.user_id,_term,datetime,boxnum,function() {
+						
+						onShipped($target);
+						return false;
+
+					});
+					
+					return false;
+					
+				}
+				
+				function onShipped($target) {
+					
+					var $parent = $target.parents(".flag").html("出荷済み").parents(".content").removeClass("waiting").addClass("shipped");
+
+					$parent.find(".shippedDatetime").text(datetime);
+					$parent.find(".boxnum").text(boxnum);
+					
+					counter++;
+					if (counter > length - 1) finish();
+					
+					return false;
+					
+				}
 				
 				return false;
 				

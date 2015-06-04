@@ -10,7 +10,7 @@ baseJS.fn.addition = function(data) {
 	========================================================================== */
 	function Ajax(_$win,_$ajax) {
 		
-		var getFilledNumber = _.getFilledNumber;
+		var _getFilledNumber,_isConnecting;
 		
 		var PATH       = _.absolutePath;
 		var BREAK_DATE = 15;
@@ -20,7 +20,11 @@ baseJS.fn.addition = function(data) {
 		========================================================================== */
 		(function() {
 			
+			_getFilledNumber = _.getFilledNumber;
+			_isConnecting    = false;
+			
 			baseJS.getTerm = getTerm;
+			
 			return false;
 			
 		})();
@@ -89,6 +93,30 @@ baseJS.fn.addition = function(data) {
 		}
 		
 		/* =======================================================================
+		Check Order
+		========================================================================== */
+		function checkOrder(quantity,itemID,onComplete) {
+			
+			getData({
+				
+				table  : "items",
+				column : "stock_quantity",
+				option : 'id="' + itemID + '"'
+				
+			},function(data) {
+
+				var stockQuantity = (+data[0].stock_quantity) - quantity;
+				onComplete(stockQuantity > -1);
+
+				return false;
+
+			});
+			
+			return false;
+			
+		}
+		
+		/* =======================================================================
 		Ship Order
 		========================================================================== */
 		function shipOrder(id,quantity,itemID,userID,term,shippedDatetime,boxnum,onSuccess,onError) {
@@ -114,15 +142,6 @@ baseJS.fn.addition = function(data) {
 			getData(t,function(data) {
 
 				var stockQuantity = (+data[0].stock_quantity) - quantity;
-
-				if (stockQuantity < 0) {
-
-					alert("アイテム上限数をオーバーするため出荷処理をキャンセルしました。");
-					onError();
-
-					return false;
-
-				}
 
 				t.value = stockQuantity;
 				updateData(t,addCounter);
@@ -282,7 +301,7 @@ baseJS.fn.addition = function(data) {
 			
 			if (d > BREAK_DATE) m += 1;
 			
-			return +(y + getFilledNumber(m,2));
+			return +(y + _getFilledNumber(m,2));
 
 		}
 
@@ -312,6 +331,8 @@ baseJS.fn.addition = function(data) {
 		function setBeforeunload() {
 			
 			_$win.on("beforeunload",function() { return "データベース登録中です。"; });
+			_isConnecting = true;
+			
 			return false;
 			
 		}
@@ -322,7 +343,18 @@ baseJS.fn.addition = function(data) {
 		function unsetBeforeunload() {
 			
 			_$win.off("beforeunload");
+			_isConnecting = false;
+			
 			return false;
+			
+		}
+		
+		/* =======================================================================
+		Get Is Connecting
+		========================================================================== */
+		function getIsConnecting() {
+			
+			return _isConnecting;
 			
 		}
 		
@@ -359,11 +391,13 @@ baseJS.fn.addition = function(data) {
 			
 			getData           : getData,
 			addOrder          : addOrder,
+			checkOrder        : checkOrder,
 			shipOrder         : shipOrder,
 			overwriteStock    : overwriteStock,
 			getDatetime       : getDatetime,
 			setBeforeunload   : setBeforeunload,
 			unsetBeforeunload : unsetBeforeunload,
+			getIsConnecting   : getIsConnecting,
 			exportCSV         : exportCSV
 			
 		};
