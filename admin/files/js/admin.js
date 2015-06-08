@@ -16,7 +16,7 @@
 	========================================================================== */
 	function Orders(_$parent) {
 		
-		var _$table,_$headers,_$orders,_$inputs,_$navis,_$boxnum;
+		var _$table,_$headers,_$orders,_$navis,_$boxnum;
 		var _data,_term;
 		
 		/* =======================================================================
@@ -149,7 +149,7 @@
 			
 			var $flags = _$orders.find(".flag");
 			
-			_$inputs = $flags.find("input").on("change",function() {
+			$flags.find("input").on("change",function() {
 				
 				var $target = $(this);
 				var $parent = $target.parents(".content");
@@ -338,7 +338,7 @@
 				
 			}
 			
-			var $checked = _$inputs.filter(":checked");
+			var $checked = _$orders.filter(".checked");
 			
 			var boxnum  = +_$boxnum.prop("value");
 			var length  = $checked.length;
@@ -386,7 +386,7 @@
 					
 					var $target = $checked.eq(i);
 					
-					var id       = $target.prop("id").split("input-order-")[1];
+					var id       = $target.prop("id").split("order-")[1];
 					var obj      = _data[id];
 					var quantity = +obj.quantity;
 					var itemID   = obj.item_id;
@@ -439,10 +439,12 @@
 				
 				function onShipped($target) {
 					
-					var $parent = $target.parents(".flag").html("出荷済み").parents(".content").removeClass("waiting").addClass("shipped");
-
-					$parent.find(".shippedDatetime").text(datetime);
-					$parent.find(".boxnum").text(boxnum);
+					$target.removeClass("waiting").removeClass("checked").addClass("shipped");
+					
+					$target.find("input").prop("checked",false);
+					$target.find(".flag").html("出荷済み");
+					$target.find(".shippedDatetime").text(datetime);
+					$target.find(".boxnum").text(boxnum);
 					
 					counter++;
 					if (counter > length - 1) finish();
