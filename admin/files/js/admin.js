@@ -364,7 +364,9 @@
 					
 					if (!isOK) {
 						
+						_ajax.unsetBeforeunload();
 						alert("アイテム上限数をオーバーするため出荷処理をキャンセルしました。");
+						
 						return false;
 						
 					}
