@@ -57,7 +57,7 @@
 	var _userAgent,_ie,_fpVersion,_absolutePath,_category,_htmlName,_pageID;
 	
 	window._ = window.baseJS = _baseJS;
-	_.VERSION = "1.01.03";
+	_.VERSION = "1.01.04";
 	
 	/* =======================================================================
 	Constructer
