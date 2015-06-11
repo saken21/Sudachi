@@ -399,7 +399,7 @@
 					quantityList[i] = quantity;
 					itemIDList[i]   = itemID;
 					
-					_ajax.checkOrder(quantity,itemIDList,onChecked);
+					_ajax.checkOrder(quantity,itemID,onChecked);
 					
 				}
 				
