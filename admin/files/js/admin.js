@@ -421,9 +421,13 @@
 			function shipp(datetime) {
 				
 				var counter = 0;
+				start();
 				
-				for (var i = 0; i < length; i++) {
-					ajax(targetList[i],idList[i],objList[i],quantityList[i],itemIDList[i]);
+				function start() {
+					
+					ajax(targetList[counter],idList[counter],objList[counter],quantityList[counter],itemIDList[counter]);
+					return false;
+					
 				}
 				
 				function ajax($target,id,obj,quantity,itemID) {
@@ -431,6 +435,12 @@
 					_ajax.shipOrder(id,quantity,itemID,obj.user_id,_term,datetime,boxnum,function() {
 						
 						onShipped($target);
+						
+						counter++;
+						
+						if (counter < length) start();
+						else finish();
+						
 						return false;
 
 					});
@@ -447,9 +457,6 @@
 					$target.find(".flag").html("出荷済み");
 					$target.find(".shippedDatetime").text(datetime);
 					$target.find(".boxnum").text(boxnum);
-					
-					counter++;
-					if (counter > length - 1) finish();
 					
 					return false;
 					
